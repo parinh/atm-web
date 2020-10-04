@@ -54,13 +54,12 @@ public class BankAccountService {
         return Arrays.asList(accounts);
     }
 
-    public BankAccount getBankAccounts(int id){
-        String url = "http://localhost:8091/api/bankaccount/" + id;
-
+    public BankAccount getBankAccount(int id){
+        String url = "http://localhost:8091/api/bankaccount/" +
+                id;
         ResponseEntity<BankAccount> response =
                 restTemplate.getForEntity(url, BankAccount.class);
         return response.getBody();
-
     }
 
     public  void editBankAccount(BankAccount bankAccount){
@@ -68,9 +67,20 @@ public class BankAccountService {
         restTemplate.put(url,bankAccount);
     }
 
+    public void depositBankAccount(BankAccount bankAccount){
+        String url = "http://localhost:8091/api/bankaccount/deposit/" +
+                bankAccount.getId();
+        restTemplate.put(url, bankAccount);
+    }
 
+    public void withdrawBankAccount(BankAccount bankAccount){
+        String url = "http://localhost:8091/api/bankaccount/withdraw/" +
+                bankAccount.getId();
+        restTemplate.put(url, bankAccount);
+    }
     public void deleteBankAccount(BankAccount bankAccount){
         String url = "http://localhost:8091/api/bankaccount/" + bankAccount.getId();
         restTemplate.delete(url,bankAccount);
     }
+
 }

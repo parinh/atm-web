@@ -51,7 +51,9 @@
             <td th:text="${account.customerId}"></td>
             <td th:text="${account.type}"></td>
             <td th:text="${account.balance}"></td>
-            <td><a th:href="@{/bankaccount/edit/{id}(id=${account.id})}"><button class="btn btn-primary" >Edit</button></a> </td>
+            <td><a th:href="@{/bankaccount/edit/{id}(id=${account.id})}"><button class="btn btn-primary" >Edit</button></a>
+                <a th:href="@{/bankaccount/deposit/{id}(id=${account.id})}"><button class="btn btn-primary" >Deposit</button></a>
+                <a th:href="@{/bankaccount/withdraw/{id}(id=${account.id})}"><button class="btn btn-primary" >Withdraw</button></a> </td>
 
             <td> <form th:action="@{/bankaccount/delete/{id}(id=${account.id})}" method="POST">
             <button type="submit" class="btn btn-danger">Delete</button>
